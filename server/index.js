@@ -20,7 +20,7 @@ const io = new Server(server, {
 io.on("connection", socket=>{
     console.log(`User connected on ${socket.id}`)
     socket.on("join_room", arg => {
-        console.log(arg);
+        console.log(`User with id ${socket.id} joined room: ${arg.roomName}`);
     })
     socket.on("disconnect", ()=>{
         console.log(`User disconnected on ${socket.id}`)
