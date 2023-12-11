@@ -31,7 +31,7 @@ function App() {
   };
 
   return isIn ? (
-    <Chat socket={socket} propUser = {room.userName} propRoom = {room.roomName}/>
+    <Chat propSocket={socket} propUser = {room.userName} propRoom = {room.roomName}/>
   ) : (
     <div>
       <h1>Join a chat</h1>
