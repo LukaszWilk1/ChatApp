@@ -14,21 +14,22 @@ const Chat = props =>{
         const messageData = {
             message: currentMessage,
             room: props.propRoom,
+            name: props.propUser,
         }
 
-        setMessages(prevVal => {
-            return [...prevVal, currentMessage];
-        })
-
         await props.propSocket.emit("send_message", messageData);
+
+        setMessages(prevVal => {
+            return [...prevVal, messageData];
+        })
+        setCurrentMessage("");
     };
 
     useEffect(() => {
 
         props.propSocket.on("recive_message", data => {
-            console.log(data);
             setMessages(prevVal => {
-                return [...prevVal, data.message];
+                return [...prevVal, data];
             })
         })
 
@@ -40,7 +41,7 @@ const Chat = props =>{
             <input type="text" name="yourMessage" id="yourMessage" value={currentMessage} onChange={handleChange}/>
             <button onClick={sendMessage}>Send</button>
             {messages.map(item => {
-                return item;
+                return <li>{item.name} : {item.message}</li>
             })}
         </div>
     )
