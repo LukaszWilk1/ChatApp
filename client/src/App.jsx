@@ -34,7 +34,7 @@ function App() {
     <Chat propSocket={socket} propUser = {room.userName} propRoom = {room.roomName}/>
   ) : (
     <div>
-      <h1>Join a chat</h1>
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h1>
       <input onChange={handleChange} type="text" name="userName" id="yourName" placeholder="Your Name" value={room.userName}/>
       <input onChange={handleChange} type="text" name="roomName" id="roomName" placeholder="Room Id" value={room.roomName}/>
       <button onClick={joinRoom}>Send</button>

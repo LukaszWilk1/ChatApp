@@ -33,7 +33,7 @@ const Chat = props =>{
             })
         })
 
-    }, [props.propSocket])
+    }, [props.propSocket]);
 
     return (
         <div id="Chat">
