@@ -1,6 +1,7 @@
 import { useState } from "react";
 import io from "socket.io-client";
 import Chat from "./Chat.jsx";
+import "./style.css";
 
 const socket = io.connect("http://localhost:3001");
 
@@ -33,8 +34,8 @@ function App() {
   return isIn ? (
     <Chat propSocket={socket} propUser = {room.userName} propRoom = {room.roomName}/>
   ) : (
-    <div>
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h1>
+    <div class="flex flex-col max-w-2xl items-center relative">
+      <h1 class="text-6xl color-lime-300 my-9">JOIN TO THE ROOM</h1>
       <input onChange={handleChange} type="text" name="userName" id="yourName" placeholder="Your Name" value={room.userName}/>
       <input onChange={handleChange} type="text" name="roomName" id="roomName" placeholder="Room Id" value={room.roomName}/>
       <button onClick={joinRoom}>Send</button>
