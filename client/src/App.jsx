@@ -28,6 +28,7 @@ function App() {
     if(room.userName!=="" && room.roomName!==""){
       socket.emit("join_room", room);
       setIsIn(true);
+      console.log(socket);
     }
   };
 
