@@ -34,7 +34,7 @@ function App() {
   return isIn ? (
       <Chat propSocket={socket} propUser = {room.userName} propRoom = {room.roomName}/>
   ) : (
-    <div class="flex flex-col max-w-2xl bg-sky-900 items-center relative w-fit rounded-md px-7 py-9 shadow-2xl shadow-lime-300/50 border border-lime-300">
+    <div class="flex flex-col max-w-2xl bg-sky-900 items-center relative w-fit rounded-md px-7 py-9 border border-lime-300">
       <h1 class="text-6xl color-lime-300 mb-9">JOIN TO THE ROOM</h1>
       <input class="w-full my-2 bg-sky-950 text-lime-300 px-2 py-1 rounded-lg outline-1 focus:outline-lime-300" onChange={handleChange} type="text" name="userName" id="yourName" placeholder="Your Name" value={room.userName}/>
       <input class="w-full my-2 bg-sky-950 text-lime-300 px-2 py-1 rounded-lg outline-1 focus:outline-lime-300" onChange={handleChange} type="text" name="roomName" id="roomName" placeholder="Room Id" value={room.roomName}/>
