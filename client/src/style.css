@@ -11,7 +11,22 @@ body{
     height: 100vh;
     background-color: #082f49;
     background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    scrollbar-width: thin;
 }
+
+div::-webkit-scrollbar {
+    width: 1px;               /* width of the entire scrollbar */
+}
+
+div::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #bef264;    /* color of the scroll thumb */
+    border-radius: 2px;       /* roundness of the scroll thumb */
+    border: 3px solid #bef264;  /* creates padding around scroll thumb */
+  }
 
 li{
     list-style: none;

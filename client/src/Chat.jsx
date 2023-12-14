@@ -41,7 +41,7 @@ const Chat = props =>{
         <div id="Chat" style={{height: "90vh"}} class="w-96 flex flex-col max-w-2xl bg-sky-900 items-center relative w-fit rounded-md px-2 pt-9 border border-lime-300">
             <h3 class="text-6xl color-lime-300 mb-9 text-center"> CHAT </h3>
             <hr class="w-full h-0.5 bg-lime-300 mb-2"/>
-            <div class="w-full h-full overflow-auto">
+            <div style={{inlineSize: "280px", overflowWrap: "break-word"}} class="w-full h-full overflow-auto">
             {messages.map(item => {
                 return <li>{item.name} : {item.message}</li>
             })}
