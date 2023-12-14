@@ -4,11 +4,14 @@
 
 body{
     box-sizing: border-box;
-    background-color: #0c4a6e;
     color: #C5FF00;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    background-color: #082f49;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 li{
