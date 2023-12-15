@@ -20,8 +20,10 @@ const io = new Server(server, {
 io.on("connection", socket=>{
     console.log(`User connected on ${socket.id}`)
     socket.on("join_room", arg => {
+        io._maxListeners++;
         console.log(`User with id ${socket.id} joined room: ${arg.roomName}`);
         socket.join(arg.roomName);
+        console.log(io.sockets.adapter.rooms.get(arg.roomName).size);
     })
 
     socket.on("send_message", data => {
