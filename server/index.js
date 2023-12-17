@@ -20,10 +20,22 @@ const io = new Server(server, {
 io.on("connection", socket=>{
     console.log(`User connected on ${socket.id}`)
     socket.on("join_room", arg => {
-        io._maxListeners++;
-        console.log(`User with id ${socket.id} joined room: ${arg.roomName}`);
-        socket.join(arg.roomName);
-        console.log(io.sockets.adapter.rooms.get(arg.roomName).size);
+
+        let ammountIn;
+
+        try {   
+            ammountIn = io.sockets.adapter.rooms.get(arg.roomName).size
+        } catch(err) {
+            ammountIn = 0;
+        }
+        
+        if(ammountIn<2){
+            console.log(`User with id ${socket.id} joined room: ${arg.roomName}`);
+            socket.emit("ammount", true, ()=>{});
+            socket.join(arg.roomName);
+        } else if(ammountIn>=2){
+            socket.emit("ammount", false, ()=>{});
+        }
     })
 
     socket.on("send_message", data => {
