@@ -33,7 +33,9 @@ function App() {
         setIsIn(arg);
         setRoomNotFull(arg);
         console.log(arg);
-      })
+      });
+
+      socket.emit("sendSignal");
     }
   };
 

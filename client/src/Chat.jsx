@@ -4,6 +4,7 @@ const Chat = props =>{
     
     const [currentMessage, setCurrentMessage] = useState("");
     const [messages, setMessages] = useState([]);
+    const [peopleIn, setPeopleIn] = useState(0);
 
     const handleChange = e =>{
         const {value} = e.target;
@@ -35,11 +36,16 @@ const Chat = props =>{
             })
         })
 
+        props.propSocket.on("updateClients", data => {
+            setPeopleIn(data+1);
+        })
+
     }, [props.propSocket]);
 
     return (
         <div id="Chat" style={{height: "90vh"}} className="w-96 flex flex-col max-w-2xl bg-sky-900 items-center relative w-fit rounded-md px-2 pt-9 border border-lime-300">
             <h3 className="text-6xl color-lime-300 mb-9 text-center"> CHAT </h3>
+            {peopleIn}/2
             <hr className="w-full h-0.5 bg-lime-300 mb-2"/>
             <div style={{inlineSize: "280px", overflowWrap: "break-word"}} className="w-full h-full overflow-auto flex flex-col-reverse pr-2">
             {

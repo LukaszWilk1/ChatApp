@@ -18,10 +18,9 @@ const io = new Server(server, {
   })
 
 io.on("connection", socket=>{
+    let ammountIn;
     console.log(`User connected on ${socket.id}`)
     socket.on("join_room", arg => {
-
-        let ammountIn;
 
         try {   
             ammountIn = io.sockets.adapter.rooms.get(arg.roomName).size
@@ -33,10 +32,12 @@ io.on("connection", socket=>{
             console.log(`User with id ${socket.id} joined room: ${arg.roomName}`);
             socket.emit("ammount", true, ()=>{});
             socket.join(arg.roomName);
+            io.to(arg.roomName).emit("updateClients", ammountIn);
         } else if(ammountIn>=2){
             socket.emit("ammount", false, ()=>{});
         }
     })
+
 
     socket.on("send_message", data => {
         console.log(data.room)
